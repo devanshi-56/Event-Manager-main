@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+// Share event code here
 const EventSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -23,8 +23,8 @@ const EventSchema = new mongoose.Schema({
         required: true
     },
     location: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     admin: {
         type: mongoose.Types.ObjectId,
