@@ -54,7 +54,7 @@ class Register extends React.Component {
 
         return (
             <form className="Register" onSubmit={this.handleSubmit}>
-                <p className="title">Sign In</p>
+                <p className="title">Sign Up</p>
                 <div className="input">
                     <input
                         type="text"
@@ -100,7 +100,7 @@ class Register extends React.Component {
                         value={rePassword}
                     />
                 </div>
-                <button type="submit" className="btn">SIGN IN</button>
+                <button type="submit" className="btn">SIGN UP</button>
             </form>
         )
     }

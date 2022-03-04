@@ -10,6 +10,7 @@ class Edit extends React.Component {
         this.state = {
             name: '',
             description: '',
+            participants: '',
             imageURL: '',
             date: '',
             location: ''
@@ -19,6 +20,7 @@ class Edit extends React.Component {
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeImageURL = this.onChangeImageURL.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
+        this.onChangeParticipants = this.onChangeParticipants.bind(this);
         this.onChangeLocation = this.onChangeLocation.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -42,12 +44,15 @@ class Edit extends React.Component {
     onChangeLocation(e) {
         this.setState({location: e.target.value});
     }
+    onChangeParticipants(e) {
+        this.setState({participants: e.target.value});
+    }
 
     handleSubmit(e) {
         e.preventDefault();
         const id = this.props.match.params.id.toString();
-        const {name, description, imageURL, location} = this.state;
-        eventServices.edit(id, {name, description, imageURL, location})
+        const {name, description, imageURL, participants, location} = this.state;
+        eventServices.edit(id, {name, description, imageURL, participants, location})
             .then(() => {
                 this.props.history.push('/');
             })
@@ -65,6 +70,7 @@ class Edit extends React.Component {
                         description: event.description,
                         imageURL: event.imageURL,
                         location: event.location,
+                        participants: event.participants,
                         date: event.date
                     });
                 }
@@ -113,6 +119,17 @@ class Edit extends React.Component {
                         value={this.state.imageURL}
                     />
                 </div>
+                <div className="input">
+                <input
+                    type="number"
+                    name="numberOfParticipants"
+                    min="1"
+                    max="500000"
+                    placeholder="number of participants"
+                    onChange={this.onChangeParticipants}
+                    value={this.state.participants}
+                />
+            </div>
                 <div className="input">
                     <input
                         type="text"

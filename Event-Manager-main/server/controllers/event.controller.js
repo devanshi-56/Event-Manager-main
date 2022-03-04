@@ -27,10 +27,10 @@ module.exports = {
 
     post: {
         create: (req, res, next) => {
-            const {description, location, name, date, imageURL} = req.body;
+            const {description, location, name, date, participants, imageURL} = req.body;
             const {_id} = req.user;
 
-            models.Event.create({description, location, name, date, imageURL, admin: _id})
+            models.Event.create({description, location, name, date, participants, imageURL, admin: _id})
                 .then((createdEvent) => {
                     return Promise.all([
                         models.User.updateOne({_id}, {$push: {createdEvents: createdEvent}}),
@@ -45,8 +45,8 @@ module.exports = {
     put: {
         edit: (req, res, next) => {
             const id = req.params.id;
-            const {name, description, imageURL, date, location} = req.body;
-            models.Event.findByIdAndUpdate(id, {name, description, imageURL, date, location})
+            const {name, description, imageURL, date, participants, location} = req.body;
+            models.Event.findByIdAndUpdate(id, {name, description, imageURL, date, participants, location})
                 .then((updatedEvent) => res.send(updatedEvent))
                 .catch(next)
         },

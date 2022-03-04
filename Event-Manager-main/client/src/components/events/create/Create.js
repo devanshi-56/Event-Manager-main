@@ -10,12 +10,13 @@ const Create = () => {
     const [date, setDate] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [location, setLocation] = useState('');
+    const [participants, setParticipants] = useState('');
     const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        eventServices.create({ name, description, location, date, imageURL })
+        eventServices.create({ name, description, location, date, participants, imageURL })
             .then(() => history.push('/'))
             .catch(err => {
                 console.log(err);
@@ -40,6 +41,9 @@ const Create = () => {
 
     const onChangeLocation = (e) => {
         setLocation(e.target.value);
+    }
+    const onChangeParticipants = (e) => {
+        setParticipants(e.target.value);
     }
 
     return (
@@ -71,6 +75,17 @@ const Create = () => {
                     max="01/01/2030"
                     onChange={onChangeDate}
                     value={date}
+                />
+            </div>
+            <div className="input">
+                <input
+                    type="number"
+                    name="numberOfParticipants"
+                    min="1"
+                    max="500000"
+                    placeholder="number of participants"
+                    onChange={onChangeParticipants}
+                    value={participants}
                 />
             </div>
             <div className="input">

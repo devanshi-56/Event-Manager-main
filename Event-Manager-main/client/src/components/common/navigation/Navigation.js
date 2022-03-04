@@ -14,7 +14,7 @@ class Navigation extends React.Component {
             <nav className="Navigation">
                 <Link to="/" className="logo">
                     <img src={logo} alt="alt"/>
-                    <p>EVENT-M</p>
+                    <p>FIND YOUR SQUAD</p>
                 </Link>
                 <ul>
                     {!this.props.isLoggedIn && <Link to="/register" className="links">Register</Link>}

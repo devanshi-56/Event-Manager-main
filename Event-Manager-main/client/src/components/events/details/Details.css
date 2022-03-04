@@ -1,5 +1,5 @@
 .Details {
-    background-color: ghostwhite;
+    background-color: rgb(185, 22, 22);
     border-radius: 5px;
     width: 40%;
     margin: 0 auto;
@@ -30,12 +30,12 @@
 }
 
 .Details .likes .blue {
-    color: #00b7ff;
+    color: rgb(185, 22, 22);
 }
 
 .Details .likes i {
     width: 20px;
     height: 20px;
-    background-color: ghostwhite;
-    color: black;
+    background-color: rgb(185, 22, 22);
+    color: rgb(185, 22, 22);
 }

@@ -36,7 +36,7 @@ class Login extends React.Component {
 
         return (
             <form className="Login" onSubmit={this.handleSubmit}>
-                <h2 className="title">Sign Up</h2>
+                <h2 className="title">Sign In</h2>
                 <div className="input">
                     <input
                         type="text"
@@ -55,7 +55,7 @@ class Login extends React.Component {
                         value={password}
                     />
                 </div>
-                <button type="submit" className="btn">SIGN UP</button>
+                <button type="submit" className="btn">SIGN IN</button>
             </form>
         )
     }

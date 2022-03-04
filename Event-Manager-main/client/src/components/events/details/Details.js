@@ -61,6 +61,8 @@ const Details = () => {
                     <p className="location">{event.location}</p>
                     <span className="question">When will the event be held?</span>
                     <p className="date">{event.date}</p>
+                    <span className="question">How many number of participants required?</span>
+                    <p className="participants">{event.participants}</p>
                     <span className="question">What is the event about?</span>
                     <p className="description">{event.description}</p>
                 </div>

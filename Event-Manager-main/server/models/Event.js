@@ -10,9 +10,13 @@ const EventSchema = new mongoose.Schema({
         required: true,
         minlength: 3
     },
+    participants: {
+        type: Number,
+        required: false
+    },
     imageURL: {
         type: String,
-        required: true
+        required: false
     },
     date: {
         type: Date,
