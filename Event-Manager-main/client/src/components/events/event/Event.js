@@ -4,7 +4,7 @@ import {useHistory } from "react-router-dom";
 import "./Event.css";
 import eventServices from "../../../services/event-services";
 import isLoggedIn from "../../../utils/auth";
-
+// Add reminder state here
 const Event = ({event, isAdmin, isLiked, isLoggedIn}) => {
     const [likeState, setLikeState] = useState(isLiked);
     const history = useHistory();
