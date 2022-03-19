@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 import './Profile.css';
-import userImg from '../../../images/user.png';
+import userImg from '../../../images/user2.jpg';
 import userService from "../../../services/user-services";
 import Event from "../../events/event/Event";
 

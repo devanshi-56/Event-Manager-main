@@ -15,7 +15,7 @@
     width: 350px;
     margin: 0 auto;
     margin-bottom: 30px;
-    color: #017fbe;
+    color: #000000;
 }
 
 .Profile .Event {
@@ -47,7 +47,7 @@
 }
 
 .Profile .profile-data .username {
-    color: #017fbe;
+    color: #000000;
 }
 
 .Profile .profile-data .buttons {
