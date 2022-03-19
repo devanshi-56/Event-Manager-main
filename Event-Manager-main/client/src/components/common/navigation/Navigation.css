@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
 .Navigation {
     background-color: ghostwhite;
     position: static;
@@ -23,7 +22,7 @@
 
 .Navigation .logo p {
     font-family: 'Montserrat', cursive;
-    color: #017fbe;
+    color: #000000;
     margin: 0 auto;
     margin-left: 5px;
     margin-top: 15px;
@@ -49,7 +48,6 @@
     padding: 10px 15px 15px 15px;
     cursor: pointer;
     border-radius: 10px;
-    background-color: #1d1b1b;
+    background-color: #000000;
     color: ghostwhite;
 }
-
