@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useHistory } from "react-router-dom";
+import dateFormat from 'dateformat';
 
 import "./Event.css";
 import eventServices from "../../../services/event-services";
@@ -51,12 +52,36 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn}) => {
                     <img src={event.imageURL} alt="alt" className="details" onClick={showDetails} id={event._id}/> :
                     <img src={event.imageURL} alt="alt" id={event._id}/>
             }
-            <p className="name">{event.name}</p>
-            <p className="description">{event.description}</p>
+            <p class="meetup">{event.name}</p>
+            {/* <h3 class="group">{event.admin.firstName + ' ' + event.admin.lastName}</h3> */}
+            {/* <p className="name"><strong>{event.name}</strong></p> */}
+            {/* <p className="description">{event.description}</p> */}
+            <p className="details"><span class="row">
+            <i class="material-icons md-36 icon">event</i>
+            <span class="row-item">
+            <time>{dateFormat(event.date, "mmmm dS, yyyy")}</time>
+            </span>
+            </span>
+            <span class="row">
+            <i class="material-icons md-36 icon">room</i>
+            <span class="row-item">
+            <span>{event.location}</span>
+            
+            </span>
+            </span>
+            <span class="row">
+            <i class="material-icons md-36 icon">person</i>
+            <span class="row-item">
+            <span>{event.admin.firstName + ' ' + event.admin.lastName}</span>
+            
+            </span>
+    </span>
+            </p>
+
             { event.admin.firstName ?
                 <div className="creator">
-                    <span>Creator: </span>
-                    {event.admin.firstName + ' ' + event.admin.lastName}
+                    
+                   
                 </div> : null
             }
                 {!isAdmin ?
