@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 .Event {
     width: 30%;
     background-color: ghostwhite;
@@ -46,6 +47,7 @@
 
 .Event .buttons .links {
     width: 50px;
+    font-family: Montserrat;
     position: absolute;
     text-decoration: none;
     padding: 5px;

@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 .Details {
-    background-color: rgb(185, 22, 22);
+    background-color: #f8f8ff;
     border-radius: 5px;
     width: 40%;
     margin: 0 auto;
@@ -17,12 +18,15 @@
     padding: 20px;
 }
 
+
 .Details .question {
     font-style: italic;
+    font-family: 'Montserrat';
 }
 
 .Details p {
     font-weight: bold;
+    font-family: 'Montserrat';
 }
 
 .Details .question:nth-child(1) {
@@ -30,12 +34,12 @@
 }
 
 .Details .likes .blue {
-    color: rgb(185, 22, 22);
+    color: rgb(25, 22, 185);
 }
 
 .Details .likes i {
     width: 20px;
     height: 20px;
-    background-color: rgb(185, 22, 22);
-    color: rgb(185, 22, 22);
+    background-color: ghostwhite;
+    color: rgb(185, 22, 144);
 }

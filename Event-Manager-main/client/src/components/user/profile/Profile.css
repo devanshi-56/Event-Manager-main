@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 .Profile {
     display: flex;
     width: 80%;
@@ -16,6 +17,7 @@
     margin: 0 auto;
     margin-bottom: 30px;
     color: #000000;
+    font-family: 'Montserrat';
 }
 
 .Profile .Event {
@@ -27,6 +29,42 @@
 
 .Profile .Event .buttons {
     padding-bottom: 40px;
+    /* align-items: center;
+    text-decoration: none;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  /* margin: 0 auto; */
+  /* margin-left: 5px;
+  margin-right: 10px;
+  padding: 10px 15px 15px 15px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+  list-style-type: none; */ 
 }
 
 .Profile .profile-data {
@@ -36,6 +74,7 @@
     background-color: ghostwhite;
     border-radius: 5px;
     padding: 20px 15px 0 15px;
+    font-family: 'Montserrat';
 }
 
 .Profile .profile-data img {
@@ -44,10 +83,12 @@
 
 .Profile .profile-data .name {
     font-weight: bold;
+    font-family: 'Montserrat';
 }
 
 .Profile .profile-data .username {
     color: #000000;
+    font-family: 'Montserrat';
 }
 
 .Profile .profile-data .buttons {
@@ -57,5 +98,41 @@
 .Profile .profile-data .buttons button {
     height: 40px;
     margin: 0 10px;
+    align-items: center;
+    text-decoration: none;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  /* margin: 0 auto; */
+  margin-left: 50px;
+  /* margin-right: 10px; */
+  padding: 10px 15px 15px 15px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+  list-style-type: none;
 }
 
