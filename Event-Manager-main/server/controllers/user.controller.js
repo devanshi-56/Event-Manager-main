@@ -42,7 +42,7 @@ module.exports = {
                 .then((user) => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
                 .then(([user, match]) => {
                     if (!match) {
-                        res.status(401).send('Invalid username or password');
+                        res.status(401).json({passError: 'Invalid username or password'});
                         return;
                     }
 

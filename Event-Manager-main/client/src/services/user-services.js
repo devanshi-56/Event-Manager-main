@@ -24,6 +24,7 @@ const userService = {
             },
             credentials: 'include'
         }).then(res => {
+            console.log(res.json().passError)
             return res.json();
         }).then(user => sessionStorage.setItem('user', JSON.stringify(user)));
     },
