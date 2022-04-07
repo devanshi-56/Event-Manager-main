@@ -62,6 +62,7 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn}) => {
             <time>{dateFormat(event.date, "mmmm dS, yyyy")}</time>
             </span>
             </span>
+           
             <span class="row">
             <i class="material-icons md-36 icon">room</i>
             <span class="row-item">
@@ -69,13 +70,26 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn}) => {
             
             </span>
             </span>
+
+            { event.admin.firstName ?
             <span class="row">
             <i class="material-icons md-36 icon">person</i>
             <span class="row-item">
             <span>{event.admin.firstName + ' ' + event.admin.lastName}</span>
-            
+            {/* event.admin.firstName ?
+            <span>{event.admin.firstName + ' ' + event.admin.lastName}
+                    
+                   
+                </span> : null */}
             </span>
-    </span>
+            </span>: <span class="row">
+            <i></i>
+            <span class="row-item">
+            <span></span>
+            
+            </span></span>
+            }
+            
             </p>
 
             { event.admin.firstName ?

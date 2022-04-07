@@ -37,7 +37,7 @@ const Profile = () => {
                     isLiked={true}
                     key={event._id}
                     event={event}
-                    display="profile"
+                    // display="profile"
                 />
             )
         })
