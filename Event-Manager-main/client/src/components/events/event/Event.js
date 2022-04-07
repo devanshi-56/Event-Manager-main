@@ -20,6 +20,7 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn}) => {
         eventServices.delete(id).then(() => {
             history.push('/');
         }).catch(err => console.log(err));
+        window.location.reload(true);
     }
 
     const hitLike = (e) => {
