@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import dateFormat from 'dateformat';
 
 import "./Details.css";
 import {useParams, useHistory} from "react-router";
@@ -60,7 +61,7 @@ const Details = () => {
                     <span className="question">Where will the event be held?</span>
                     <p className="location">{event.location}</p>
                     <span className="question">When will the event be held?</span>
-                    <p className="date">{event.date}</p>
+                    <p className="date">{dateFormat(event.date, "mmmm dS, yyyy")}</p>
                     <span className="question">How many number of participants required?</span>
                     <p className="participants">{event.participants}</p>
                     <span className="question">What is the event about?</span>
