@@ -13,7 +13,11 @@ const userService = {
                 'Content-type': 'application/json'
             },
             credentials: 'include'
-        }).then(res => res.json()).then(user => sessionStorage.setItem('user', JSON.stringify(user)));
+        }).then(
+            res => res.json()
+        ).then(user => {
+            sessionStorage.setItem('user', JSON.stringify(user))
+        });
     },
     login: function(data) {
         return fetch(`http://localhost:4000/user/login`, {
