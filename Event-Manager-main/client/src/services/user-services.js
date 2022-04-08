@@ -24,9 +24,26 @@ const userService = {
             },
             credentials: 'include'
         }).then(res => {
-            console.log(res.json().passError)
+            // console.log(res.json().passError)
             return res.json();
-        }).then(user => sessionStorage.setItem('user', JSON.stringify(user)));
+        }).then((response) => {
+            let temp = response;
+            // console.log(JSON.stringify(response));
+            // console.log(temp["code"]);
+            // console.log(temp["firstName"]);
+            // console.log(temp)
+            // return response;
+            if(temp["code"] === -1)
+                {
+                    alert("Wrong password");
+                    // return()
+                }
+            else
+                return response;
+
+        }).then(user => {
+            sessionStorage.setItem('user', JSON.stringify(user));
+        });
     },
     logout: function() {
         return fetch(`http://localhost:4000/user/logout`, {

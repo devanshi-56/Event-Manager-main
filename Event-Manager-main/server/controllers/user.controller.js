@@ -42,8 +42,11 @@ module.exports = {
                 .then((user) => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
                 .then(([user, match]) => {
                     if (!match) {
-                        res.status(401).json({passError: 'Invalid username or password'});
-                        return;
+                        return res.status(401).json({
+                            passError: 'Invalid username or password',
+                            code: -1,
+                        });
+                        // return;
                     }
 
                     const token = utils.jwt.createToken({ id: user._id });
