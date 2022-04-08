@@ -8,6 +8,7 @@ const Create = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
+    const [expire_at, setExpire_at] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [location, setLocation] = useState('');
     const [participants, setParticipants] = useState('');
@@ -16,7 +17,7 @@ const Create = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        eventServices.create({ name, description, location, date, participants, imageURL })
+        eventServices.create({ name, description, location, date, participants, imageURL,expire_at })
             .then(() => history.push('/'))
             .catch(err => {
                 console.log(err);
@@ -33,6 +34,20 @@ const Create = () => {
 
     const onChangeDate = (e) => {
         setDate(e.target.value);
+        const date1 = e.target.value;
+        let n = date1.length;
+        console.log(n);
+        let ones = parseInt(date1[n-1]);
+        let tens = parseInt(date1[n-2]);  
+        let date2= ((tens*10)+ones+1);
+        date2=date2.toString();
+        console.log(date2);
+        let date3 =date1.substring(0,n-2) + date2;
+
+        console.log(date3);
+        setExpire_at(date3);
+        //setExpire_at(new Date(e.target.value.getTime()+ 24*60*60000));
+        
     }
 
     const onChangeImageURL = (e) => {

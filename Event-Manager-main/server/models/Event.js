@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // Share event code here
 const EventSchema = new mongoose.Schema({
+    
     name: {
         type: String,
         required: true
@@ -30,6 +31,7 @@ const EventSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
+    expire_at: {type: Date, default:Date.now, expires: 600},
     likes: [{
         type: mongoose.Types.ObjectId,
         ref: 'User'
