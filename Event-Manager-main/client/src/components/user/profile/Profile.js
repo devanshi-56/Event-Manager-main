@@ -9,6 +9,7 @@ const Profile = () => {
     const [display, setDisplay] = useState('createdEvents');
     const [user, setUser] = useState({});
     const [likedEvents, setLikedEvents] = useState([]);
+    const [interestedEvents, setInterestedEvents] = useState([]);
     const [createdEvents, setCreatedEvents] = useState([]);
 
     useEffect(() => {
@@ -16,6 +17,7 @@ const Profile = () => {
         userService.get(userId).then(res => {
             setUser(res);
             setLikedEvents(res['likedEvents']);
+            setInterestedEvents(res['interestedEvents']);
             setCreatedEvents(res['createdEvents']);
         }).catch(err => console.log(err));
     }, []);
@@ -27,6 +29,9 @@ const Profile = () => {
     const createdEventsClick = (e) => {
         setDisplay('createdEvents');
     }
+    const interestedEventsClick = (e) => {
+        setDisplay('interestedEvents');
+    }
 
     const renderLikedEvents = () => {
         return likedEvents.map(event => {
@@ -35,6 +40,21 @@ const Profile = () => {
                 <Event
                     isAdmin={false}
                     isLiked={true}
+                    
+                    key={event._id}
+                    event={event}
+                    // display="profile"
+                />
+            )
+        })
+    }
+    const renderInterestedEvents = () => {
+        return interestedEvents.map(event => {
+
+            return (
+                <Event
+                    isAdmin={false}
+                    isInterested={true}
                     key={event._id}
                     event={event}
                     // display="profile"
@@ -64,18 +84,28 @@ const Profile = () => {
                         <h1>Liked Events</h1>
                         {likedEvents.length !== 0 ? renderLikedEvents() : <span>No liked events</span>}
                     </div> :
-                    <div className="createdEvents">
-                        <h1>Created Events</h1>
-                        {createdEvents.length !== 0 ? renderCreatedEvents() : <span>No created events</span>}
-                    </div>}
+                    <div>
+                    {display === 'interestedEvents' ?
+                        <div className="interestedEvents">
+                        <h1>Interested Events</h1>
+                        {interestedEvents.length !== 0 ? renderInterestedEvents() : <span>No interested events</span>}
+                    </div>:
+                        <div className="createdEvents">
+                            <h1>Created Events</h1>
+                            {createdEvents.length !== 0 ? renderCreatedEvents() : <span>No created events</span>}
+                        </div>
+                    }</div>  
+                }
                 <div className="profile-data">
                     <img src={userImg} alt="alt"/>
                     <p className="name">{user.firstName.toUpperCase() + ' ' + user.lastName.toUpperCase()}</p>
                     <p className="username">{ '@' + user.username}</p>
                     <p className="liked-events">Liked events: {user.likedEvents.length}</p>
                     <p className="created-events">Created events: {user.createdEvents.length}</p>
+                    <p className="interested-events">Interested events: {user.interestedEvents.length}</p>
                     <div className="buttons">
                         <button onClick={likedEventsClick}>Liked events</button>
+                        <button onClick={interestedEventsClick}>Interested events</button>
                         <button onClick={createdEventsClick}>Created events</button>
                     </div>
                 </div>

@@ -50,6 +50,7 @@ module.exports = {
                 .then((updatedEvent) => res.send(updatedEvent))
                 .catch(next)
         },
+        
         like: (req, res, next) => {
             const id = req.params.id;
             const {_id} = req.user;
@@ -58,6 +59,20 @@ module.exports = {
                 .then(updatedEvent => {
                     return Promise.all([
                         models.User.findByIdAndUpdate(_id, {$push: {likedEvents: id}}),
+                        models.Event.findOne({_id: updatedEvent._id})
+                    ]);
+                })
+                .then(([userObj, eventObj]) => res.send(eventObj))
+                .catch(next);
+        },
+        participate: (req, res, next) => {
+            const id = req.params.id;
+            const {_id} = req.user;
+
+            models.Event.findByIdAndUpdate(id, {$push: {interestedParticipants: _id}})
+                .then(updatedEvent => {
+                    return Promise.all([
+                        models.User.findByIdAndUpdate(_id, {$push: {interestedEvents: id}}),
                         models.Event.findOne({_id: updatedEvent._id})
                     ]);
                 })

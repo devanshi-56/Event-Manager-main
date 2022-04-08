@@ -35,6 +35,10 @@ const EventSchema = new mongoose.Schema({
     likes: [{
         type: mongoose.Types.ObjectId,
         ref: 'User'
+    }],
+    interestedParticipants: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
     }]
 });
 

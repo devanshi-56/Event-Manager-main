@@ -10,6 +10,8 @@ router.post('/create', auth(), controllers.event.post.create);
 
 router.put('/like/:id', auth(), controllers.event.put.like);
 
+router.put('/participate/:id', auth(), controllers.event.put.participate);
+
 router.put('/dislike/:id', auth(), controllers.event.put.dislike);
 
 router.put('/edit/:id', auth(), controllers.event.put.edit);
