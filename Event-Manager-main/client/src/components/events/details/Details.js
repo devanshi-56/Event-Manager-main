@@ -51,9 +51,18 @@ const Details = () => {
     const handleParticipate = (e) => {
         const id = e.currentTarget.id;
         eventServices.participate(id).then(() => {
-            history.push('/')
-            alert("Participated")
+            alert("Participated");
             setInterestStatus(true);
+            history.push('/details/' + id);
+        }).catch(err => console.log(err));
+    }
+
+    const handleUnParticipate = (e) => {
+        const id = e.currentTarget.id;
+        eventServices.unParticipate(id).then(() => {
+            alert("Participation withdrawn !");
+            setInterestStatus(false);
+            history.push('/details/' + id);
         }).catch(err => console.log(err));
     }
 
@@ -115,7 +124,10 @@ const Details = () => {
                             </div> 
                         </div>:
                         <div className="buttons">
-                            <button className="links" id={event._id} onClick={handleParticipate}>Participate</button>
+                            {!interestStatus ?
+                                <button className="links" id={event._id} onClick={handleParticipate}>Participate</button>:
+                                <button className="links" id={event._id} onClick={handleUnParticipate}>Withdraw</button>
+                            }   
                         </div>
                     }
                 </div>

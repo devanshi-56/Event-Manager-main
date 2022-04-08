@@ -59,6 +59,15 @@ const eventServices = {
             credentials: 'include'
         }).then(res => res.json());
     },
+    unParticipate: function (id) {
+        return fetch('http://localhost:4000/event/unParticipate/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => res.json());
+    },
     details: async function (id) {
         const promise = await fetch(`http://localhost:4000/event/details/${id}`, {
             method: 'GET',
