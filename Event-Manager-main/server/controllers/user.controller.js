@@ -46,7 +46,6 @@ module.exports = {
                             passError: 'Invalid username or password',
                             code: -1,
                         });
-                        // return;
                     }
 
                     const token = utils.jwt.createToken({ id: user._id });
