@@ -40,6 +40,25 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
         }).catch(err => console.log(err));
     }
 
+    const handleParticipate = (e) => {
+        const id = e.currentTarget.id;
+        eventServices.participate(id).then(() => {
+            alert("Participated");
+            history.push('/details/' + id);
+            setInterestState(true);
+        }).catch(err => console.log(err));
+    }
+
+    const handleUnParticipate = (e) => {
+        const id = e.currentTarget.id;
+        eventServices.unParticipate(id).then(() => {
+            alert("Participation withdrawn !");
+            history.push('/details/' + id);
+            setInterestState(false);
+        }).catch(err => console.log(err));
+    }
+    
+    
     const showDetails = (e) => {
         const id = e.currentTarget.id;
         eventServices.details(id).then(() => {

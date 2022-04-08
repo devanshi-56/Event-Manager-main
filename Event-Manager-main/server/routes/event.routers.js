@@ -12,6 +12,8 @@ router.put('/like/:id', auth(), controllers.event.put.like);
 
 router.put('/participate/:id', auth(), controllers.event.put.participate);
 
+router.put('/unParticipate/:id', auth(), controllers.event.put.unParticipate);
+
 router.put('/dislike/:id', auth(), controllers.event.put.dislike);
 
 router.put('/edit/:id', auth(), controllers.event.put.edit);

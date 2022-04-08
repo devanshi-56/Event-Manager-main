@@ -92,6 +92,21 @@ module.exports = {
                 })
                 .then(([userObj, eventObj]) => res.send(eventObj))
                 .catch(next);
+        },
+        
+        unParticipate: (req, res, next) => {
+            const id = req.params.id;
+            const {_id} = req.user;
+
+            models.Event.findByIdAndUpdate(id, {$pull: {interestedParticipants: _id}})
+                .then(updatedEvent => {
+                    return Promise.all([
+                        models.User.findByIdAndUpdate(_id, {$pull: {interestedEvents: id}}),
+                        models.Event.findOne({_id: updatedEvent._id})
+                    ]);
+                })
+                .then(([userObj, eventObj]) => res.send(eventObj))
+                .catch(next);
         }
     },
 

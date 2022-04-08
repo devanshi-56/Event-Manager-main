@@ -28,6 +28,7 @@ const Home = ({isLoggedIn}) => {
                     <Event
                         isAdmin={isAdmin(event)}
                         isLiked={isLiked(event)}
+                        isInterested={isInterested(event)}
                         key={event._id}
                         event={event}
                         isLoggedIn={true}
@@ -40,6 +41,7 @@ const Home = ({isLoggedIn}) => {
                     <Event
                         isAdmin={false}
                         isLiked={false}
+                        isInterested={false}
                         key={event._id}
                         event={event}
                         isLoggedIn={false}
