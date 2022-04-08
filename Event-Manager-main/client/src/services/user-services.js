@@ -33,11 +33,10 @@ const userService = {
             // console.log(temp["firstName"]);
             // console.log(temp)
             // return response;
-            if(temp["code"] === -1)
-                {
-                    alert("Wrong password");
-                    // return()
-                }
+            if(temp["code"] === -1){
+                alert("Wrong password");
+                window.location.reload(true);
+            }
             else
                 return response;
 
