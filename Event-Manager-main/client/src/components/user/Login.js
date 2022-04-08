@@ -8,7 +8,8 @@ class Login extends React.Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            error: ''
         }
 
         this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -26,9 +27,10 @@ class Login extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const {username, password} = this.state;
-
+        const {username, password, error} = this.state;
+        // const error = 
         this.props.login({username, password}, this.props.history);
+        
     }
 
     render() {
