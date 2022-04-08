@@ -27,10 +27,10 @@ module.exports = {
 
     post: {
         create: (req, res, next) => {
-            const {description, location, name, date, participants, imageURL} = req.body;
+            const {description, location, name, date, participants, imageURL ,expire_at } = req.body;
             const {_id} = req.user;
-
-            models.Event.create({description, location, name, date, participants, imageURL, admin: _id})
+            console.log(expire_at);
+            models.Event.create({description, location, name, date, participants, imageURL, admin: _id,expire_at })
                 .then((createdEvent) => {
                     return Promise.all([
                         models.User.updateOne({_id}, {$push: {createdEvents: createdEvent}}),
