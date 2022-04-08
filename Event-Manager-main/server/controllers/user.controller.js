@@ -15,6 +15,7 @@ module.exports = {
              models.User.findById(_id)
                  .populate('likedEvents')
                  .populate('createdEvents')
+                 .populate('interestedEvents')
                  .exec(function (err, result) {
                      if (err) {
                          console.log(err);

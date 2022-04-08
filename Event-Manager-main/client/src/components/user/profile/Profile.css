@@ -5,7 +5,7 @@
     margin: 30px auto;
 }
 
-.Profile .likedEvents, .createdEvents {
+.Profile .likedEvents, .createdEvents, .interestedEvents {
     max-width: 40%;
     margin: 0 auto;
 }

@@ -3,6 +3,7 @@ import './Home.css';
 import Event from "../../events/event/Event";
 import isAdmin from "../../../utils/isAdmin";
 import isLiked from "../../../utils/isLiked";
+import isInterested from "../../../utils/isInterested";
 import eventServices from "../../../services/event-services";
 
 const Home = ({isLoggedIn}) => {
