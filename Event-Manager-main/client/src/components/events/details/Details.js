@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from "react";
 import dateFormat from 'dateformat';
+import useCollapse from 'react-collapsed';
 
 import "./Details.css";
 import {useParams, useHistory} from "react-router";
 import isAdmin from "../../../utils/isAdmin";
 import isLiked from "../../../utils/isLiked";
+import isInterested from "../../../utils/isInterested";
 import eventServices from "../../../services/event-services";
 
 const Details = () => {
     const [event, setEvent] = useState({});
     const [likeStatus, setLikeStatus] = useState(false);
+    const [interestStatus, setInterestStatus] = useState(false);
     const [admin, setIsAdmin] = useState(false);
     const {id} = useParams();
     const history = useHistory();
@@ -19,6 +22,7 @@ const Details = () => {
             setEvent(res);
             setIsAdmin(isAdmin(res));
             setLikeStatus(isLiked(res));
+            setInterestStatus(isInterested(res));
         }).catch(err => console.log(err));
     }, []);
 
@@ -32,6 +36,7 @@ const Details = () => {
         eventServices.delete(id).then(() => {
             history.push('/');
         }).catch(err => console.log(err));
+        window.location.reload(true);
         history.push('/');
     }
 
@@ -43,6 +48,15 @@ const Details = () => {
         }).catch(err => console.log(err));
     }
 
+    const handleParticipate = (e) => {
+        const id = e.currentTarget.id;
+        eventServices.participate(id).then(() => {
+            history.push('/')
+            alert("Participated")
+            setInterestStatus(true);
+        }).catch(err => console.log(err));
+    }
+
     const hitDislike = (e) => {
         const id = e.currentTarget.id;
         eventServices.dislike(id).then(() => {
@@ -50,6 +64,15 @@ const Details = () => {
             setLikeStatus(false);
         }).catch(err => console.log(err));
     }
+    // function Collapsible() {
+    const [ isExpanded, setExpanded ] = useState(false);
+    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+    const handleOnClick = () => {
+        // Do more stuff with the click event!
+        // Or, set isExpanded conditionally 
+        setExpanded(!isExpanded);
+    }
+
 
     const render = () => {
         return (
@@ -74,12 +97,27 @@ const Details = () => {
                                 <i className="far fa-thumbs-up blue" id={event._id} onClick={hitDislike}></i> :
                                 <i className="far fa-thumbs-up" id={event._id} onClick={hitLike}></i>
                             }
-                        </div>
-                        :
+                        </div>:
                         <div className="buttons">
                             <button className="links" id={event._id} onClick={handleEdit}>Edit</button>
                             <button className="links" id={event._id} onClick={handleDelete}>Delete</button>
                         </div>}
+                    {admin ?
+                        <div>
+                            <div className="header" {...getToggleProps({onClick: handleOnClick})}>
+                                {isExpanded ? <i className="fas fa-angle-up"></i> : <i className="fas fa-angle-down"></i>}
+                            </div>
+                            <div {...getCollapseProps()}>
+                                <div className="content">
+                                    Now you can see the hidden content. <br/><br/>
+                                    Click again to hide...
+                                </div>
+                            </div> 
+                        </div>:
+                        <div className="buttons">
+                            <button className="links" id={event._id} onClick={handleParticipate}>Participate</button>
+                        </div>
+                    }
                 </div>
             </div>
         )

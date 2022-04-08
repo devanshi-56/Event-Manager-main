@@ -6,8 +6,9 @@ import "./Event.css";
 import eventServices from "../../../services/event-services";
 import isLoggedIn from "../../../utils/auth";
 // Add reminder state here
-const Event = ({event, isAdmin, isLiked, isLoggedIn}) => {
+const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
     const [likeState, setLikeState] = useState(isLiked);
+    const [interestedState, setInterestState] = useState(isInterested);
     const history = useHistory();
 
     const handleEdit = (e) => {
