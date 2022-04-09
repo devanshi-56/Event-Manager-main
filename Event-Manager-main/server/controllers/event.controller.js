@@ -1,4 +1,6 @@
+require('dotenv').config();
 const models = require('../models');
+const Users = require('../models/User.js')
 
 module.exports = {
     get: {
@@ -20,7 +22,20 @@ module.exports = {
             const id = req.params.id;
 
             models.Event.findById(id).populate('admin')
-                .then(ev => res.send(ev))
+                .then(async ev =>  {
+                    let arr = [];
+                    let docs = await Users.find({}).lean();
+                    arr = docs.filter((doc) => doc !== null);
+                    for(let i = 0; i < ev.interestedParticipants.length; i++){
+                        var userId = ev.interestedParticipants[i];
+                        for(let j = 0; j < arr.length; j++){
+                            if(JSON.stringify(arr[j]._id).localeCompare(JSON.stringify(userId)) === 0){
+                                ev.interestedParticipants[i] = arr[j].firstName + " " + arr[j].lastName;
+                            }
+                        }
+                    }
+                    res.send(ev)
+                })
                 .catch(next);
         }
     },
