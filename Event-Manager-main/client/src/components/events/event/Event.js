@@ -121,12 +121,12 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
             }
                 {!isAdmin ?
                     <div>
-                        {event.admin.firstName ?
+                {event.admin.firstName ?
                 <div className="likes">
-                {likeState ?
-                    <i className="far fa-thumbs-up blue" id={event._id} onClick={hitDislike}></i> :
-                    <i className="far fa-thumbs-up" id={event._id} onClick={hitLike}></i>
-                }
+                    {likeState ?
+                        <i className="far fa-thumbs-up" id={event._id} onClick={hitDislike}></i> :
+                        <i className="far fa-thumbs-down" id={event._id} onClick={hitLike}></i>
+                    }
                 <span> {event.likes.length + (event.likes.length === 1 ? " Like" : " Likes")}</span>
                 </div> : null }
                     </div>
