@@ -80,22 +80,23 @@ const Profile = () => {
         return (
             <div className="Profile">
                 {display === 'likedEvents' ?
-                    <div className="likedEvents">
+                    <div>
                         <h1>Liked Events</h1>
                         {likedEvents.length !== 0 ? renderLikedEvents() : <span>No liked events</span>}
                     </div> :
                     <div>
                     {display === 'interestedEvents' ?
-                        <div className="interestedEvents">
+                        <span>
                         <h1>Interested Events</h1>
                         {interestedEvents.length !== 0 ? renderInterestedEvents() : <span>No interested events</span>}
-                    </div>:
-                        <div className="createdEvents">
+                        </span>:
+                        <span>
                             <h1>Created Events</h1>
                             {createdEvents.length !== 0 ? renderCreatedEvents() : <span>No created events</span>}
-                        </div>
+                        </span>
                     }</div>  
                 }
+               
                 <div className="profile-data">
                     <img src={userImg} alt="alt"/>
                     <p className="name">{user.firstName.toUpperCase() + ' ' + user.lastName.toUpperCase()}</p>

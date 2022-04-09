@@ -119,6 +119,10 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
                    
                 </div> : null
             }
+                {interestedState ?
+                    <div><button className="links" id={event._id}>CheckStatus</button></div>:
+                    <div></div>
+                }
                 {!isAdmin ?
                     <div>
                 {event.admin.firstName ?
@@ -129,8 +133,7 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
                     }
                 <span> {event.likes.length + (event.likes.length === 1 ? " Like" : " Likes")}</span>
                 </div> : null }
-                    </div>
-                :
+                </div>:
                 <div className="buttons">
                 <button className="links" id={event._id} onClick={handleEdit}>Edit</button>
                 <button className="links" id={event._id} onClick={handleDelete}>Delete</button>
