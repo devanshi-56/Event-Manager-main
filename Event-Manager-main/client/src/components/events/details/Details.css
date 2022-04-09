@@ -37,6 +37,10 @@
     color: rgb(25, 22, 185);
 }
 
+.header .i{
+    font-family: Montserrat;
+}
+
 .Details .likes i {
     width: 20px;
     height: 20px;

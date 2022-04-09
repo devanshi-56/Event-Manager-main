@@ -2,6 +2,13 @@ import React, {useState, useEffect} from "react";
 import dateFormat from 'dateformat';
 import useCollapse from 'react-collapsed';
 import { Card, CardContent, CardHeader, CardMedia, ButtonGroup, CardActions } from '@material-ui/core'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Checkbox from '@mui/material/Checkbox';
+import Avatar from '@mui/material/Avatar';
 
 import "./Details.css";
 import {useParams, useHistory} from "react-router";
@@ -20,7 +27,21 @@ const Details = () => {
     const {id} = useParams();
     const history = useHistory();
     const [ isExpanded, setExpanded ] = useState(false);
-    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });  
+    const [checked, setChecked] = React.useState([1]);
+
+    const handleToggle = (value) => () => {
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1);
+        }
+
+        setChecked(newChecked);
+    }
     
     useEffect(() => {
         eventServices.details(id).then(res => {
@@ -44,6 +65,7 @@ const Details = () => {
         window.location.reload(true);
         history.push('/');
     }
+
 
     const hitLike = (e) => {
         const id = e.currentTarget.id;
@@ -87,15 +109,44 @@ const Details = () => {
         setExpanded(!isExpanded);
     }
 
-    const getParticipantName = (participantID)=> {
-        // const user = JSON.parse
-    }
-
     const renderInterestedParticipants = () => {
-        return event.interestedParticipants.map(participate => (
-            <li>{participate}</li>
-        ))
-    }
+        return (
+            // <li>
+            //     {participate.name}
+            //     <br></br><i class="fa-solid fa-check"></i>
+            //     <br></br><i class="fa-solid fa-xmark"></i>
+            // </li>
+            <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            {event.interestedParticipants.map((participate) => {
+              const labelId = `checkbox-list-secondary-label-${participate.name}`;
+              return (
+                <ListItem
+                  key={participate.name}
+                  secondaryAction={
+                    <Checkbox
+                      edge="end"
+                      onChange={handleToggle(participate.name)}
+                      checked={checked.indexOf(participate.name) !== -1}
+                      inputProps={{ 'aria-labelledby': labelId }}
+                    />
+                  }
+                  disablePadding>
+                  <ListItemButton>
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={`Avatar`}
+                        // src={`/static/images/avatar/${value + 1}.jpg`}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText id={labelId} primary={participate.name} />
+                  </ListItemButton>
+                </ListItem>
+              );
+            })}
+          </List>
+            // const labelId = `checkbox-list-secondary-label-${value}`;
+        
+         );}
 
 
     const render = () => {
@@ -159,15 +210,18 @@ const Details = () => {
                         <CardContent>
                             {admin ?
                             <div>
-                                <div className="header" {...getToggleProps({onClick: handleOnClick})}>
+                                <div className="header" {...getToggleProps({onClick: handleOnClick})} >
                                     {isExpanded ? <i className="fas fa-angle-up">  view less</i> : <i className="fas fa-angle-down">  view more</i>}
                                 </div>
                                 <div {...getCollapseProps()}>
                                     <div className="content">
                                         {/* Now you can see the hidden content. <br/><br/>
                                         Click again to hide... */}
-                                        <ul>{renderInterestedParticipants()}</ul>
+                                        {/* <ul>{renderInterestedParticipants()}</ul> */}
                                         {/* {event.interestedParticipants.firstName} */}
+                                        <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                                            {renderInterestedParticipants()}
+                                        </List>
                                     </div>
                                 </div> 
                             </div>:

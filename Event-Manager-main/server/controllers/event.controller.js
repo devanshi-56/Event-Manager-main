@@ -30,7 +30,12 @@ module.exports = {
                         var userId = ev.interestedParticipants[i];
                         for(let j = 0; j < arr.length; j++){
                             if(JSON.stringify(arr[j]._id).localeCompare(JSON.stringify(userId)) === 0){
-                                ev.interestedParticipants[i] = arr[j].firstName + " " + arr[j].lastName;
+                                // ev.interestedParticipants[i] = arr[j].firstName + " " + arr[j].lastName;
+                                ev.interestedParticipants[i] = {
+                                    objId: ev.interestedParticipants[i],
+                                    name: arr[j].firstName + " " + arr[j].lastName
+                                }
+                                // console.log(ev.interestedParticipants[i])
                             }
                         }
                     }
