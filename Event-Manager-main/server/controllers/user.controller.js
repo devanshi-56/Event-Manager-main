@@ -25,6 +25,20 @@ module.exports = {
                  });
         }
     },
+    put: {
+        edit: (req, res, next) => {
+            console.log("Hello");
+            const id = req.params.id;
+            console.log(id);
+
+            const {firstName, lastName, username, password} = req.body;
+            
+            models.User.findByIdAndUpdate(id, {firstName, lastName, username, password})
+            
+                .then((updatedUser) => res.send(updatedUser))
+                .catch(next)
+        }
+    },
 
     post: {
         register: (req, res, next) => {
@@ -36,6 +50,8 @@ module.exports = {
                 })
                 .catch(next)
         },
+
+        
 
         login: (req, res, next) => {
             const { username, password } = req.body;

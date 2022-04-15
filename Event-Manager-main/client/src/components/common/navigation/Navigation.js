@@ -7,9 +7,12 @@ import "./Navigation.css";
 class Navigation extends React.Component {
     constructor(props) {
         super(props);
+        
     }
+   
 
     render() {
+        
         return (
             <nav className="Navigation">
                 <Link to="/" className="logo">
@@ -23,7 +26,9 @@ class Navigation extends React.Component {
                     {this.props.isLoggedIn && <Link to="/profile" className="links">Profile</Link>}
                     {this.props.isLoggedIn && <Link to="/logout" className="links">Logout</Link>}
                 </ul>
+                
             </nav>
+            
         )
     }
 }

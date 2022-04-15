@@ -5,6 +5,7 @@ const eventServices = {
 
         return events;
     },
+    
     create: function(data) {
         return fetch('http://localhost:4000/event/create', {
             method: 'POST',
@@ -16,8 +17,9 @@ const eventServices = {
         }).then(res => res.json());
     },
     edit: function (id, data) {
-        debugger;
-        return fetch('http://localhost:4000/event/edit/' + id, {
+        
+        console.log(data);
+        return fetch('http://localhost:4000/event/edit/' + id, {    
             method: 'PUT',
             body: JSON.stringify(data),
             headers: {
