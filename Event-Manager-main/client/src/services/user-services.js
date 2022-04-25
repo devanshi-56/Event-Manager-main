@@ -1,13 +1,17 @@
 const userService = {
+    
     get: function(id) {
-        return fetch('http://localhost:4000/user/' + id, {
+        return fetch(`http://localhost:4000/user/` + id, {
            method: 'GET',
            credentials: 'include'
         }).then(res => res.json());
+        
     },
     register: function(data) {
+       
         return fetch(`http://localhost:4000/user/register`, {
             method: 'POST',
+            
             body: JSON.stringify(data),
             headers: {
                 'Content-type': 'application/json'
@@ -18,6 +22,18 @@ const userService = {
         ).then(user => {
             sessionStorage.setItem('user', JSON.stringify(user))
         });
+    },
+    edit: function (id, data) {
+        console.log(data);
+         return fetch(`http://localhost:4000/user/user/edit/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => res.json());
+        
     },
     login: function(data) {
         return fetch(`http://localhost:4000/user/login`, {

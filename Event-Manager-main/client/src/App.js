@@ -14,6 +14,7 @@ import Edit from "./components/events/edit/Edit";
 import Profile from "./components/user/profile/Profile";
 import Details from "./components/events/details/Details";
 import isLoggedIn from "./utils/auth";
+import Pedit from "./components/user/profile/profile_edit"
 
 function renderCmp(Cmp, otherProps) {
     return function (props) {
@@ -64,6 +65,8 @@ class App extends React.Component {
                     {isLoggedIn && <Route path="/details/:id" component={renderCmp(Details)}/>}
                     {isLoggedIn && <Route path="/edit/:id" component={renderCmp(Edit)}/> }
                     {isLoggedIn && <Route path="/profile" component={renderCmp(Profile)}/>}
+                    {isLoggedIn && <Route path="/user/edit/:id" component={renderCmp(Pedit)}/> 
+                    }
                     <Route path="*" component={NotFound}/>
                 </Switch>
             </div>
