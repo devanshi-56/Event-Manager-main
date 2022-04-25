@@ -31,9 +31,9 @@ module.exports = {
             const id = req.params.id;
             // console.log(id);
 
-            const {firstName, lastName, username, password} = req.body;
+            const {firstName, lastName, username} = req.body;
             
-            models.User.findByIdAndUpdate(id, {firstName, lastName, username, password})
+            models.User.findByIdAndUpdate(id, {firstName, lastName, username })
             
                 .then((updatedUser) => res.send(updatedUser))
                 .catch(next)

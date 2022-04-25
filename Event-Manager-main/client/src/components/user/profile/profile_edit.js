@@ -10,15 +10,15 @@ class Pedit extends React.Component {
         this.state = {
             firstName: '',
             lastName: '',
-            username: '',
-            password: '',
-            rePassword: ''
+            username: ''
+            // password: '',
+            // rePassword: ''
         }
         this.onChangeFirstName = this.onChangeFirstName.bind(this);
         this.onChangeLastName = this.onChangeLastName.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onChangeRePassword = this.onChangeRePassword.bind(this);
+        // this.onChangePassword = this.onChangePassword.bind(this);
+        // this.onChangeRePassword = this.onChangeRePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -35,21 +35,21 @@ class Pedit extends React.Component {
             this.setState({username: e.target.value});
         }
     
-        onChangePassword(e) {
-            this.setState({password: e.target.value});
-        }
+        // onChangePassword(e) {
+        //     this.setState({password: e.target.value});
+        // }
     
-        onChangeRePassword(e) {
-            this.setState({rePassword: e.target.value});
-        }
+        // onChangeRePassword(e) {
+        //     this.setState({rePassword: e.target.value});
+        // }
         handleSubmit(e) {
             e.preventDefault();
             this.props.history.push('/');
             const id = this.props.match.params.id.toString();
             
 
-            const {firstName, lastName, username, password} = this.state;
-            userService.edit(id, {firstName, lastName, username, password})
+            const {firstName, lastName, username} = this.state;
+            userService.edit(id, {firstName, lastName, username})
             .then(() => {
                 
                 this.props.history.push('/');
@@ -69,7 +69,7 @@ class Pedit extends React.Component {
                         firstName: user.firstName,
                         lastName: user.lastName,
                         username: user.username,
-                        password: user.password,
+                        // password: user.password,
                         
                     });
                 }
@@ -109,7 +109,7 @@ class Pedit extends React.Component {
                         value={this.state.username}
                     />
                 </div>
-                <div className="input">
+                {/* <div className="input">
                     <input
                        type="password"
                        name="password"
@@ -126,7 +126,7 @@ class Pedit extends React.Component {
                     onChange={this.onChangeRePassword}
                     
                 />
-            </div>
+            </div> */}
                 
                 <button type="submit" className="btn">Edit</button>
             </form>
