@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-
+import {useHistory } from "react-router-dom";
 import './Profile.css';
 import userImg from '../../../images/user2.jpg';
 import userService from "../../../services/user-services";
@@ -11,6 +11,7 @@ const Profile = () => {
     const [likedEvents, setLikedEvents] = useState([]);
     const [interestedEvents, setInterestedEvents] = useState([]);
     const [createdEvents, setCreatedEvents] = useState([]);
+    const history = useHistory();
 
     useEffect(() => {
         const userId = JSON.parse(sessionStorage.getItem('user'))._id;
@@ -19,6 +20,7 @@ const Profile = () => {
             setLikedEvents(res['likedEvents']);
             setInterestedEvents(res['interestedEvents']);
             setCreatedEvents(res['createdEvents']);
+            
         }).catch(err => console.log(err));
     }, []);
 
@@ -31,6 +33,13 @@ const Profile = () => {
     }
     const interestedEventsClick = (e) => {
         setDisplay('interestedEvents');
+    }
+    const editProfileClick =(e)=> {
+        
+        const userId = JSON.parse(sessionStorage.getItem('user'))._id;
+        //const id = e.currentTarget.id;
+        history.push('user/edit/' + userId);
+        console.log("Hello");
     }
 
     const renderLikedEvents = () => {
@@ -109,6 +118,8 @@ const Profile = () => {
                         <button onClick={likedEventsClick}>Liked events</button>
                         <button onClick={interestedEventsClick}>Interested events</button>
                         <button onClick={createdEventsClick}>Created events</button>
+                        <button className="links" id={user._id}onClick={editProfileClick}>Edit Profile</button>
+
                     </div>
                 </div>
             </div>
