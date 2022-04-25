@@ -98,6 +98,7 @@ const Profile = () => {
                 }
                
                 <div className="profile-data">
+                    <div classname="profile-edit"><i class="fas fa-edit"></i></div>
                     <img src={userImg} alt="alt"/>
                     <p className="name">{user.firstName.toUpperCase() + ' ' + user.lastName.toUpperCase()}</p>
                     <p className="username">{ '@' + user.username}</p>

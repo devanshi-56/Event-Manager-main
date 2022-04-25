@@ -118,3 +118,10 @@
     filter: brightness(40%);
     cursor: pointer;
 }
+
+.header {
+    padding-bottom: 10px;
+}
+.content {
+    padding-bottom: 5px;
+}

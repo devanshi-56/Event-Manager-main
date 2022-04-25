@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useHistory } from "react-router-dom";
 import dateFormat from 'dateformat';
+import useCollapse from 'react-collapsed';
 
 import "./Event.css";
 import eventServices from "../../../services/event-services";
@@ -10,6 +11,9 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
     const [likeState, setLikeState] = useState(isLiked);
     const [interestedState, setInterestState] = useState(isInterested);
     const history = useHistory();
+    const [ isExpanded, setExpanded ] = useState(false);
+    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });  
+    
 
     const handleEdit = (e) => {
         const id = e.currentTarget.id;
@@ -66,6 +70,10 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
         }).catch(err => console.log(err));
     }
 
+    const handleOnClick = () => {
+        setExpanded(!isExpanded);
+    }
+
     return (
         <div className="Event" key={event._id}>
             {
@@ -120,8 +128,21 @@ const Event = ({event, isAdmin, isLiked, isLoggedIn, isInterested}) => {
                 </div> : null
             }
                 {interestedState ?
-                    <div><button className="links" id={event._id}>CheckStatus</button></div>:
-                    <div></div>
+                    <div>
+                        <div className="header" {...getToggleProps({onClick: handleOnClick})} >
+                            {isExpanded ? <span><i className="fas fa-angle-up"></i><span>Check Status</span></span> : 
+                                <span><i className="fas fa-angle-down"></i><span>Check Status</span></span>}
+                        </div>
+                        <div {...getCollapseProps()}>
+                            <div className="content">
+                                   <p>Accepted !</p>
+                                   <i class="fa-solid fa-phone"></i>  9999444477                                       
+                            </div>
+                        </div> 
+                    </div>:
+                    <div>
+
+                    </div>
                 }
                 {!isAdmin ?
                     <div>
