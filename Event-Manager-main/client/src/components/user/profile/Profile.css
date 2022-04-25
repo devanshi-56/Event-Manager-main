@@ -138,3 +138,13 @@
   list-style-type: none;
 }
 
+.Profile .profile-data .profile-edit {
+    align-content: right;
+    /* padding-right: 100px; */
+    /* position: absolute;
+    right: 50px; */
+    position: absolute;
+    right: 0;
+    top: 15px;
+ 
+}

@@ -211,7 +211,8 @@ const Details = () => {
                             {admin ?
                             <div>
                                 <div className="header" {...getToggleProps({onClick: handleOnClick})} >
-                                    {isExpanded ? <i className="fas fa-angle-up">  view less</i> : <i className="fas fa-angle-down">  view more</i>}
+                                    {isExpanded ? <span><i className="fas fa-angle-up"></i><span>View Less</span></span> : 
+                                        <span><i className="fas fa-angle-down"></i><span>View More</span></span>}
                                 </div>
                                 <div {...getCollapseProps()}>
                                     <div className="content">
