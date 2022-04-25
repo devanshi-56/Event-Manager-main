@@ -37,9 +37,19 @@
     color: rgb(25, 22, 185);
 }
 
+.header .i{
+    font-family: Montserrat;
+}
+
 .Details .likes i {
     width: 20px;
     height: 20px;
     background-color: ghostwhite;
     color: rgb(185, 22, 144);
+}
+
+.card .Image {
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+    width: 100%;
 }
