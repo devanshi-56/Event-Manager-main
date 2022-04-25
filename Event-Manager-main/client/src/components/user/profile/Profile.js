@@ -107,8 +107,10 @@ const Profile = () => {
                 }
                
                 <div className="profile-data">
-                    <div classname="profile-edit"><i class="fas fa-edit"></i></div>
-                    <img src={userImg} alt="alt"/>
+                    <div classname="profile-edit">
+                        <img src={userImg} alt="alt"/>
+                        <i class="fas fa-edit" onClick={editProfileClick}></i>
+                    </div>
                     <p className="name">{user.firstName.toUpperCase() + ' ' + user.lastName.toUpperCase()}</p>
                     <p className="username">{ '@' + user.username}</p>
                     <p className="liked-events">Liked events: {user.likedEvents.length}</p>
@@ -118,8 +120,7 @@ const Profile = () => {
                         <button onClick={likedEventsClick}>Liked events</button>
                         <button onClick={interestedEventsClick}>Interested events</button>
                         <button onClick={createdEventsClick}>Created events</button>
-                        <button className="links" id={user._id}onClick={editProfileClick}>Edit Profile</button>
-
+                        {/* <button className="links" id={user._id}onClick={editProfileClick}>Edit Profile</button> */}
                     </div>
                 </div>
             </div>
