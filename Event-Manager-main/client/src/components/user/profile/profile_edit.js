@@ -45,7 +45,7 @@ class Pedit extends React.Component {
         handleSubmit(e) {
             e.preventDefault();
             this.props.history.push('/');
-            /*const id = this.props.match.params.id.toString();
+            const id = this.props.match.params.id.toString();
             
 
             const {firstName, lastName, username, password} = this.state;
@@ -55,15 +55,9 @@ class Pedit extends React.Component {
                 this.props.history.push('/');
                 console.log(this.state);
             })
-            .catch(err => console.log(err));*/
+            .catch(err => console.log(err));
             
         }
-    
-
-    
-
-    
-   
 
     componentDidMount() {
         const id = this.props.match.params.id.toString();

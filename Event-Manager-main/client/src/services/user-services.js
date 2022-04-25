@@ -25,15 +25,9 @@ const userService = {
     },
     edit: function (id, data) {
         console.log(data);
-         return fetch(`http://localhost:4000/user/edit/${id}`, {
+         return fetch(`http://localhost:4000/user/user/edit/${id}`, {
             method: 'PUT',
-            body: JSON.stringify({
-                firstName: this.state.firstName,
-            lastName: this.props.lastName,
-            username: this.props.username,
-            password: this.props.password
-
-            }),
+            body: JSON.stringify(data),
             headers: {
                 'Content-type': 'application/json'
             },

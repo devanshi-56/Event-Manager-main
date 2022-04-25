@@ -27,9 +27,9 @@ module.exports = {
     },
     put: {
         edit: (req, res, next) => {
-            console.log("Hello");
+            // console.log("Hello");
             const id = req.params.id;
-            console.log(id);
+            // console.log(id);
 
             const {firstName, lastName, username, password} = req.body;
             
