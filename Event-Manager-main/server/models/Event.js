@@ -31,7 +31,15 @@ const EventSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-    expire_at: {type: Date, default:Date.now, expires: 600},
+    category: {
+        type: Number,
+        required: true
+    },
+    expire_at: {
+        type: Date, 
+        default:Date.now, 
+        expires: 600
+    },
     likes: [{
         type: mongoose.Types.ObjectId,
         ref: 'User'

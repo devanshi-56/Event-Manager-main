@@ -26,6 +26,7 @@ class Login extends React.Component {
     }
 
     handleSubmit(e) {
+        localStorage.setItem("filter", -1)
         e.preventDefault();
         const {username, password, error} = this.state;
         // const error = 
