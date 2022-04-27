@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+// import Combobox from "react-widgets/Combobox";
 
 import '../../../shared/styles.css';
 import eventServices from "../../../services/event-services";
@@ -12,12 +13,13 @@ const Create = () => {
     const [imageURL, setImageURL] = useState('');
     const [location, setLocation] = useState('');
     const [participants, setParticipants] = useState('');
+    const [category, setCategory] = useState(0);
     const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        eventServices.create({ name, description, location, date, participants, imageURL,expire_at })
+        console.log(e.target)
+        eventServices.create({ name, description, location, date, participants, imageURL,expire_at, category })
             .then(() => history.push('/'))
             .catch(err => {
                 console.log(err);
@@ -36,15 +38,15 @@ const Create = () => {
         setDate(e.target.value);
         const date1 = e.target.value;
         let n = date1.length;
-        console.log(n);
+        // console.log(n);
         let ones = parseInt(date1[n-1]);
         let tens = parseInt(date1[n-2]);  
         let date2= ((tens*10)+ones+1);
         date2=date2.toString();
-        console.log(date2);
+        // console.log(date2);
         let date3 =date1.substring(0,n-2) + date2;
 
-        console.log(date3);
+        // console.log(date3);
         setExpire_at(date3);
         //setExpire_at(new Date(e.target.value.getTime()+ 24*60*60000));
         
@@ -60,7 +62,10 @@ const Create = () => {
     const onChangeParticipants = (e) => {
         setParticipants(e.target.value);
     }
-
+    const onChangeCategory = (e) =>{
+        setCategory(e.target.value);
+    }
+    
     return (
         <form className="Create" onSubmit={handleSubmit}>
             <p className="title">Create your event</p>
@@ -120,6 +125,14 @@ const Create = () => {
                     onChange={onChangeLocation}
                     value={location}
                 />
+            </div>
+            <div className="input">
+                <select name="category" id="category" onChange={onChangeCategory}>
+                    <option value="0">Movie</option>
+                    <option value="1">Group Study</option>
+                    <option value="2">Team Sports</option>
+                    <option value="3">Other</option>
+                </select>
             </div>
             <button type="submit" className="btn">CREATE</button>
         </form>
