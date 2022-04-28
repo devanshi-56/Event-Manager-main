@@ -31,9 +31,9 @@ module.exports = {
             const id = req.params.id;
             // console.log(id);
 
-            const {firstName, lastName, username} = req.body;
+            const {firstName, lastName, username, email} = req.body;
             
-            models.User.findByIdAndUpdate(id, {firstName, lastName, username })
+            models.User.findByIdAndUpdate(id, {firstName, lastName, username, email})
             
                 .then((updatedUser) => res.send(updatedUser))
                 .catch(next)
@@ -42,8 +42,8 @@ module.exports = {
 
     post: {
         register: (req, res, next) => {
-            const { firstName, lastName, username, password } = req.body;
-            models.User.create({ firstName, lastName, username, password })
+            const { firstName, lastName, username, email, password } = req.body;
+            models.User.create({ firstName, lastName, username, email, password })
                 .then((createdUser) => {
                     const token = utils.jwt.createToken({ id: createdUser._id });
                     res.cookie(process.env.COOKIE, token).send(createdUser);
