@@ -53,3 +53,7 @@
     border-top-left-radius: inherit;
     width: 100%;
 }
+.card .Description .material-icons {
+    float: right;
+    cursor: pointer;
+}
