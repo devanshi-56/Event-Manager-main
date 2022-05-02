@@ -37,6 +37,12 @@
     margin: auto;
 }
 
+.Navigation .fa-solid fa-bell
+{
+  height: 50px;
+  color: black;
+}
+
 .Navigation .links {
     /* width: 70px;
     height: 20px;

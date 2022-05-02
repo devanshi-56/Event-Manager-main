@@ -25,6 +25,8 @@ class Navigation extends React.Component {
                     {this.props.isLoggedIn && <Link to="/create" className="links">Create</Link>}
                     {this.props.isLoggedIn && <Link to="/profile" className="links">Profile</Link>}
                     {this.props.isLoggedIn && <Link to="/logout" className="links">Logout</Link>}
+                    {this.props.isLoggedIn && <Link to="/notification" className="fa-solid fa-bell fa-2x" style={{paddingLeft : '20px', paddingTop:'10px' , size:'20px'}}></Link>}
+                    
                 </ul>
                 
             </nav>
