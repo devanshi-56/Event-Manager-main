@@ -117,6 +117,11 @@ const Details = () => {
         alert("Copied to Clipboard!");
     }
 
+    const handleShare = () => {
+        navigator.clipboard.writeText(window.location.href);
+        alert("Copied URL to the Clipboard!");
+    }
+
     const renderInterestedParticipants = () => {
         return (
             // <li>
@@ -169,6 +174,7 @@ const Details = () => {
                         <CardContent>
                             <span align="center" class="Description">
                                 {event.description}
+                                <span class="material-icons" onClick={handleShare}>share</span>
                                 <span class="material-icons" onClick={handleCopy}>content_copy</span>
                             </span>
                         </CardContent>
