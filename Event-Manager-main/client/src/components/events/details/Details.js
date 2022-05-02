@@ -109,6 +109,14 @@ const Details = () => {
         setExpanded(!isExpanded);
     }
 
+    const handleCopy = () =>{
+        var copyText = "Title: " + event.name + "\nDate: " + dateFormat(event.date, "mmmm dd, yyyy") +
+            "\nDescription: " + event.description + "\nLocation: " + event.location + "\nHost: " +
+            event.admin.firstName + ' ' + event.admin.lastName;
+        navigator.clipboard.writeText(copyText);
+        alert("Copied to Clipboard!");
+    }
+
     const renderInterestedParticipants = () => {
         return (
             // <li>
@@ -159,9 +167,10 @@ const Details = () => {
                         />
                         <img src={event.imageURL} alt="alt" id={event._id} className='Image' />
                         <CardContent>
-                            <div align="center">
+                            <span align="center" class="Description">
                                 {event.description}
-                            </div>
+                                <span class="material-icons" onClick={handleCopy}>content_copy</span>
+                            </span>
                         </CardContent>
                         <CardContent>
                             <div align="left">
