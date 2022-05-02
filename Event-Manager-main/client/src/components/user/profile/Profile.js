@@ -113,6 +113,7 @@ const Profile = () => {
                     </div>
                     <p className="name">{user.firstName.toUpperCase() + ' ' + user.lastName.toUpperCase()}</p>
                     <p className="username">{ '@' + user.username}</p>
+                    <p className="email">{user.email}</p>
                     <p className="liked-events">Liked events: {user.likedEvents.length}</p>
                     <p className="created-events">Created events: {user.createdEvents.length}</p>
                     <p className="interested-events">Interested events: {user.interestedEvents.length}</p>

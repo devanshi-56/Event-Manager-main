@@ -24,7 +24,6 @@ const userService = {
         });
     },
     edit: function (id, data) {
-        console.log(data);
          return fetch(`http://localhost:4000/user/user/edit/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
@@ -44,15 +43,9 @@ const userService = {
             },
             credentials: 'include'
         }).then(res => {
-            // console.log(res.json().passError)
             return res.json();
         }).then((response) => {
             let temp = response;
-            // console.log(JSON.stringify(response));
-            // console.log(temp["code"]);
-            // console.log(temp["firstName"]);
-            // console.log(temp)
-            // return response;
             if(temp["code"] === -1){
                 alert("Wrong password");
                 window.location.reload(true);
