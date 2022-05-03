@@ -9,7 +9,7 @@ dbConnection().then(() => {
 
     require('./config/routes')(app);
 
-    app.listen(process.env.PORT, console.log(`Listening on port ${process.env.PORT}!`));
+    app.listen(process.env.PORT, console.log(`Listening on port ${process.env.PORT||4000}!`));
     console.log('Connected to MongoDB');
     
 
