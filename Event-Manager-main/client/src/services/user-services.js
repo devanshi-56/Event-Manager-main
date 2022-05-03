@@ -1,7 +1,7 @@
 const userService = {
     
     get: function(id) {
-        return fetch(`http://localhost:4000/user/` + id, {
+        return fetch(`https://find-squad-back.herokuapp.com/user/` + id, {
            method: 'GET',
            credentials: 'include'
         }).then(res => res.json());
@@ -9,7 +9,7 @@ const userService = {
     },
     register: function(data) {
        
-        return fetch(`http://localhost:4000/user/register`, {
+        return fetch(`https://find-squad-back.herokuapp.com/user/register`, {
             method: 'POST',
             
             body: JSON.stringify(data),
@@ -24,7 +24,7 @@ const userService = {
         });
     },
     edit: function (id, data) {
-         return fetch(`http://localhost:4000/user/user/edit/${id}`, {
+         return fetch(`https://find-squad-back.herokuapp.com/user/user/edit/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: {
@@ -35,7 +35,7 @@ const userService = {
         
     },
     login: function(data) {
-        return fetch(`http://localhost:4000/user/login`, {
+        return fetch(`https://find-squad-back.herokuapp.com/user/login`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -58,7 +58,7 @@ const userService = {
         });
     },
     logout: function() {
-        return fetch(`http://localhost:4000/user/logout`, {
+        return fetch(`https://find-squad-back.herokuapp.com/user/logout`, {
             method: 'POST',
             credentials: 'include'
         }).then(res => res.text()).then(() => sessionStorage.clear());
