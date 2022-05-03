@@ -203,6 +203,14 @@ const Details = () => {
                                     </span>
                                 </span>
                             </div>
+                            <div align="left">
+                                <span class="row">
+                                    <i class="material-icons">groups</i>
+                                    <span class="row-item">
+                                        <span>  No. of Spots remaining: {(event.participants- event.interestedParticipants.length)}</span>
+                                    </span>
+                                </span>
+                            </div>
                 
                         </CardContent>
                         <CardActions>
